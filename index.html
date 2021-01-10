@@ -10,6 +10,7 @@
 <script src="pkg/grok.js"></script>
 
 <script>
+var encoder = new TextEncoder;
 var worker = new Worker('worker.js');
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
