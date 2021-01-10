@@ -1,4 +1,4 @@
-importScripts("vecs.js");
+importScripts('vecs.js');
 
 console.log(random);
 const vec = random;
