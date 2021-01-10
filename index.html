@@ -24,8 +24,14 @@ function changeText(){
 b1 = encoder.encode(a1);
 var weights = Object.entries(b1);
   if (weights.length < 640000) {
+    console.log(weights);
+
     weights.extend(weights)
+    console.log(weights);
+
   } else if (weights.length > 640000) {
+    console.log(weights);
+
     weights.length = 640000;
   } else if (weights.length == 640000) {
     console.log(weights);
