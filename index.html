@@ -42,7 +42,8 @@ worker.onmessage = function (message) {
   async function run() {
   await wasm_bindgen('pkg/grok_bg.wasm');
 
-  const display = prediction(message.data, weights)
+  const display = prediction(message.data, weights);
+  return display;
   }
 
   run();
