@@ -41,7 +41,6 @@ worker.onmessage = function (message) {
 
   async function run() {
   await wasm_bindgen('pkg/grok_bg.wasm');
-  console.log(prediction);
   const display = await prediction(message.data, weights);
   console.log("here")
   var c = document.getElementById("myCanvas");
