@@ -42,19 +42,19 @@ worker.onmessage = function (message) {
   async function run() {
   await wasm_bindgen('pkg/grok_bg.wasm');
 
-  const display = prediction(message.data, weights);
-  return display;
+  const display = await prediction(message.data, weights);
+
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  ctx.drawImage(display,0,0,400,400);
   }
 
   run();
 
-  console.log(display);
-  console.log("display is not defined :/");
 
 
-  // var c = document.getElementById("myCanvas");
-  // var ctx = c.getContext("2d");
-  // ctx.drawImage(display,0,0,400,400);
+
+
 
 }
 
