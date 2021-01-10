@@ -38,18 +38,15 @@ const { predict } = wasm_bindgen;
 
 worker.onmessage = function (message) {
 
-  console.log("weights are " + weights);
-
-  console.log("received "+ message.data);
 
   async function run() {
   await wasm_bindgen('pkg/grok_bg.wasm');
 
-  // const display = predict(e.data, weights)
+  const display = predict(e.data, weights)
 
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
-  // ctx.drawImage(display,0,0,400,400);
+  ctx.drawImage(display,0,0,400,400);
   }
 
   run();
