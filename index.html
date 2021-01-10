@@ -36,7 +36,7 @@ var weights = Object.values(b1);
 const { predict } = wasm_bindgen;
 
 
-self.onmessage = function (message) {
+worker.onmessage = function (message) {
 
   console.log("weights are " + weights);
 
