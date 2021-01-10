@@ -42,7 +42,7 @@ worker.onmessage = function (message) {
   async function run() {
   await wasm_bindgen('pkg/grok_bg.wasm');
 
-  const display = predict(e.data, weights)
+  const display = predict(message.data, weights)
 
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
