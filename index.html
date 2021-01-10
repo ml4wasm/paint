@@ -35,17 +35,19 @@ var weights = Object.values(b1);
 
 const { predict } = wasm_bindgen;
 
-self.onmessage = function (e) {
 
-async function run() {
-await wasm_bindgen('./pkg/grok_bg.wasm');
-console.log("received "+ e.data);
-console.log("weights are " + weights);
-// const display = predict(e.data, weights)
+self.onmessage = function (message) {
+  async function run() {
+  await wasm_bindgen('./pkg/grok_bg.wasm');
+  console.log("weights are " + weights);
 
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-// ctx.drawImage(display,0,0,400,400);
+  console.log("received "+ message.data);
+  // const display = predict(e.data, weights)
+
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  // ctx.drawImage(display,0,0,400,400);
+  }
 
 }
 
@@ -54,7 +56,7 @@ run();
 }
 
 
-}
+
 </script>
   </body>
 </html>
