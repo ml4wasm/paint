@@ -10,6 +10,10 @@
 <script src="pkg/grok.js"></script>
 
 <script>
+Array.prototype.extend = function (other_array) {
+    /* You should include a test to check whether other_array really is an array */
+    other_array.forEach(function(v) {this.push(v)}, this);
+}
 var encoder = new TextEncoder;
 var worker = new Worker('worker.js');
 var c = document.getElementById("myCanvas");
@@ -20,7 +24,7 @@ function changeText(){
 weights = encoder.encode(a1);
 
   if (weights.length < 640000) {
-    weights.push(...weights)
+    weights.extend(weights)
   } else if (weights.length > 640000) {
     weights.length = 640000;
   } else if (weights.length == 640000) {
