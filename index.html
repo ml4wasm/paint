@@ -16,11 +16,10 @@ Array.prototype.extend = function (other_array) {
 }
 var encoder = new TextEncoder;
 var worker = new Worker('worker.js');
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
+
 
 function changeText(){
-  a1 = document.getElementById("place").value
+  a1 = document.getElementById("place").value;
 b1 = encoder.encode(a1);
 var weights = Object.values(b1);
   while (weights.length < 640000) {
@@ -42,6 +41,8 @@ async function run() {
 await wasm_bindgen('./pkg/grok_bg.wasm');
 const display = predict(e.data, weights)
 
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
 ctx.drawImage(display,0,0,400,400);
 
 }
