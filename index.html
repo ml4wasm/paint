@@ -22,7 +22,6 @@ var ctx = c.getContext("2d");
 function changeText(){
   a1 = document.getElementById("place").value
 b1 = encoder.encode(a1);
-console.log(typeof weights);
 const weights = Object.entries(b1);
   if (weights.length < 640000) {
     weights.extend(weights)
