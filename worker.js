@@ -1,7 +1,8 @@
 importScripts('vecs.js');
 
+const rand = Object.entries(random)
 
-if (random[0]!=0){
-  console.log(random);
-  self.postMessage(random);
+if (rand[0]!=0){
+  console.log(rand);
+  self.postMessage(rand);
 }
