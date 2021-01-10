@@ -5,17 +5,47 @@
     <title></title>
   </head>
   <body>
+  <input id="place" placeholder="Type text to encode here."> <button onclick="changeText()" id="placer"> encode </button>
+  <canvas id="myCanvas" width="400" height="400">
 <script src="pkg/grok.js"></script>
+
 <script>
+var worker = new Worker('worker.js')
+var worker1 = new Worker('worker1.js')
+
+var weights = function changeText(){
+  a1 = document.getElementById("place").value
+  b1 = encoder.encode(a1);
+
+  if (b1.length < 640000) < {
+    Array.prototype.push.apply(b1, b1);
+  } else if (b1.length > 640000) {
+    bl.length = 640000;
+  } else if (b1.length == 640000) {
+    return bl
+  }
+
+}
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
 
 
     const { predict } = wasm_bindgen;
 
-       async function run() {
-         await wasm_bindgen('./pkg/grok_bg.wasm');
+
+    self.onmessage = function (e) {
+
+      async function run() {
+        await wasm_bindgen('./pkg/grok_bg.wasm');
+        const display = predict(e.data, weights)
 
 
-       }
+    ctx.drawImage(display,0,0,400,400);
+
+      }
+
+    }
 
        run();
 </script>
