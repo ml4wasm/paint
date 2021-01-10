@@ -22,7 +22,7 @@ var ctx = c.getContext("2d");
 function changeText(){
   a1 = document.getElementById("place").value
 b1 = encoder.encode(a1);
-var weights = Object.entries(b1);
+var weights = Object.values(b1);
   while (weights.length < 640000) {
 
     weights.extend(weights)
