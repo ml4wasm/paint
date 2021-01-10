@@ -1,6 +1,7 @@
 importScripts('vecs.js');
 
 console.log(random);
-const vec = random;
 
-self.postMessage(vec);
+if (random[0]!=0){
+  self.postMessage(random);
+}
