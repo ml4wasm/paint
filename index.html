@@ -20,7 +20,7 @@ function changeText(){
 weights = encoder.encode(a1);
 
   if (weights.length < 640000) {
-    weights.push(weights);
+    weights =  weights + weights;
   } else if (weights.length > 640000) {
     weights.length = 640000;
   } else if (weights.length == 640000) {
