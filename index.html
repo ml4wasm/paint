@@ -36,7 +36,7 @@ wasm.postMessage([e.data,weights]);
   		mImgData.data[dstIndex] = send[srcIndex];		// r
   		mImgData.data[dstIndex+1] = 0 //send[srcIndex+1];	// g
   		mImgData.data[dstIndex+2] = 0 //send[srcIndex+2];	// b
-  		mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
+  		mImgData.data[dstIndex+3] = 120; // 255 = 0xFF - constant alpha, 100% opaque
   		srcIndex += 3;
   		dstIndex += 4;
   	}
