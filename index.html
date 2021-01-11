@@ -47,6 +47,8 @@ worker.onmessage = function (message) {
       send.push(n)
     }
     send.length = 640000;
+    send.fill(255,639999, 640000);
+
 
     ctx.putImageData(send, 0, 0);
   }
