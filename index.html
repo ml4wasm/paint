@@ -29,6 +29,8 @@ weights.extend(weights)
 weights.length = 640000;
 
 worker.onmessage = function (message) {
+  console.log(typeof message.data)
+  console.log(typeof weights)
 
   worker2.postMessage(message.data,weights);
   console.log("here")
