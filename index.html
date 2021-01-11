@@ -11,7 +11,7 @@
 
 <script>
 var worker = new Worker('worker.js');
-worker2 = new Worker('wasm.js');
+var worker2 = new Worker('wasm.js');
 Array.prototype.extend = function (other_array) {
     other_array.forEach(function(v) {this.push(v)}, this);
 }
