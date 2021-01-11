@@ -38,8 +38,8 @@ worker.onmessage = function (message) {
   var ctx = c.getContext("2d");
   console.log("whee")
   worker2.onmessage = function(e){
-    ctx.drawImage(e.data,0,0,400,400);
     console.log("oh wow")
+    ctx.drawImage(e.data,0,0,400,400);
   }
 
 
