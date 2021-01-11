@@ -38,6 +38,7 @@ worker.onmessage = function (message) {
   worker2.onmessage = function(e){
     console.log("oh wow")
 
+    l = e.data.length;
     var send = []
     for (var i=0;i<l;i++){
       var n = Math.round(e.data[i]);
