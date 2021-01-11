@@ -1,7 +1,8 @@
 importScripts('vecs.js');
 
-const rand = Object.values(random)
+const r = Object.values(random)
 
+var rand = r.slice();
 var l = rand.length;
 
 for (var i=0;i<l;i++){
