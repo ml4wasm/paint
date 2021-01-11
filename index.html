@@ -7,63 +7,44 @@
   <body>
   <input id="place" placeholder="Type text to encode here."> <button onclick="changeText()" id="placer"> encode </button>
   <canvas id="myCanvas" width="400" height="400">
-<!-- <script src="pkg/grok.js"></script> -->
-
 <script>
 var worker = new Worker('worker.js');
-var worker2 = new Worker('wasm.js');
-Array.prototype.extend = function (other_array) {
-    other_array.forEach(function(v) {this.push(v)}, this);
-}
-var encoder = new TextEncoder;
+var wasm = new Worker('wasm.js');
+var text = new Worker('text,js');
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var mImgData = ctx.createImageData(400, 400);
+
 
 function changeText(){
 a1 = document.getElementById("place").value;
-b1 = encoder.encode(a1);
-var weights = Object.values(b1);
-while (weights.length < 640000) {
-weights.extend(weights)
-}
-weights.length = 640000;
+text.postMessage(a1);
+text.onmessage = function (message){
+var weights = message.data;
 
-worker.onmessage = function (message) {
 
-  worker2.postMessage([message.data,weights]);
-  console.log("here")
+worker.onmessage = function (e) {
 
-  var c = document.getElementById("myCanvas");
-  console.log("here too")
-  var ctx = c.getContext("2d");
-  console.log("whee")
-  worker2.onmessage = function(e){
-    console.log("oh wow")
+wasm.postMessage([e.data,weights]);
 
-    l = e.data.length;
-    var send = []
-    for (var i=0;i<l;i++){
-      var n = Math.round(e.data[i]);
-      send.push(n)
-    }
-    console.log(send);
-    send.length = 640000;
-    send.fill(255,639999, 640000);
-    console.log(send);
-    var mImgData = ctx.createImageData(400, 400);
-    var srcIndex=0, dstIndex=0, curPixelNum=0;
+  wasm.onmessage = function(z){
+  var send = z.data;
+  send.length= 640000;
+  var srcIndex=0, dstIndex=0, curPixelNum=0;
 
-    	for (curPixelNum=0; curPixelNum<400*400;  curPixelNum++)
-    	{
-    		mImgData.data[dstIndex] = send[srcIndex];		// r
-    		mImgData.data[dstIndex+1] = send[srcIndex+1];	// g
-    		mImgData.data[dstIndex+2] = send[srcIndex+2];	// b
-    		mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
-    		srcIndex += 3;
-    		dstIndex += 4;
-    	}
+  	for (curPixelNum=0; curPixelNum<400*400;  curPixelNum++){
+  		mImgData.data[dstIndex] = send[srcIndex];		// r
+  		mImgData.data[dstIndex+1] = 0 //send[srcIndex+1];	// g
+  		mImgData.data[dstIndex+2] = 0 //send[srcIndex+2];	// b
+  		mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
+  		srcIndex += 3;
+  		dstIndex += 4;
+  	}
     ctx.putImageData(mImgData, 0, 0);
   }
 
   }
+}
 
 }
 
