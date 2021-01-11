@@ -3,7 +3,7 @@ Array.prototype.extend = function (other_array) {
 }
 var encoder = new TextEncoder;
 self.onmessage = function (e){
-  b1 = encoder.encode(a1);
+  b1 = encoder.encode(e.data);
   var weights = Object.values(b1);
   while (weights.length < 640000) {
   weights.extend(weights)
