@@ -39,7 +39,7 @@ worker.onmessage = function (message) {
   console.log("whee")
   worker2.onmessage = function(e){
     console.log("oh wow")
-    ctx.drawImage(e.data,0,0,400,400);
+    ctx.putImageData(e.data, 0, 0);
   }
 
 
