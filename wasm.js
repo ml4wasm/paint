@@ -11,7 +11,7 @@ self.onmessage = function (message){
 
   async function run() {
 
-  const display = await neural_network(message.data[0], essage.data[1]); //image, weights
+  const display = await neural_network(message.data[0], message.data[1]); //image, weights
   self.postMessage(display);
 
   }
