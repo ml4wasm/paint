@@ -14,6 +14,6 @@ send.length = 640000;
 send.fill(255,639999, 640000);
 
 if (send[0]!==0){
-  console.log(send[0]);
+  console.log(send);
   self.postMessage(send);
 }
