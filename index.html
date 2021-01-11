@@ -22,9 +22,7 @@ a1 = document.getElementById("place").value;
 b1 = encoder.encode(a1);
 var weights = Object.values(b1);
 while (weights.length < 640000) {
-
 weights.extend(weights)
-
 }
 weights.length = 640000;
 
@@ -32,7 +30,7 @@ worker.onmessage = function (message) {
   console.log(typeof message.data)
   console.log(typeof weights)
 
-  worker2.postMessage(message.data,weights);
+  worker2.postMessage([message.data,weights]);
   console.log("here")
 
   var c = document.getElementById("myCanvas");
