@@ -7,17 +7,15 @@
   <body>
   <input id="place" placeholder="Type text to encode here."> <button onclick="changeText()" id="placer"> encode </button>
   <canvas id="myCanvas" width="400" height="400">
-<script src="pkg/grok.js"></script>
+<!-- <script src="pkg/grok.js"></script> -->
 
 <script>
+var worker = new Worker('worker.js');
+worker2 = new Worker('wasm.js');
 Array.prototype.extend = function (other_array) {
-    /* You should include a test to check whether other_array really is an array */
     other_array.forEach(function(v) {this.push(v)}, this);
 }
 var encoder = new TextEncoder;
-var worker = new Worker('worker.js');
-
-
 function changeText(){
 a1 = document.getElementById("place").value;
 b1 = encoder.encode(a1);
@@ -27,31 +25,26 @@ while (weights.length < 640000) {
 weights.extend(weights)
 
 }
-console.log(weights);
 weights.length = 640000;
-console.log(weights);
-
-
-
-const { neural_network }  = wasm_bindgen;
-
 
 worker.onmessage = function (message) {
 
-  async function run() {
-  await wasm_bindgen('pkg/grok_bg.wasm');
-  const display = await neural_network(message.data, weights);
+  worker2.postMessage(message.data,weights);
   console.log("here")
+
   var c = document.getElementById("myCanvas");
   console.log("here too")
   var ctx = c.getContext("2d");
   console.log("whee")
-
-  ctx.drawImage(display,0,0,400,400);
-  console.log("oh wow")
+  worker2.onmessage = function(e){
+    ctx.drawImage(e.data,0,0,400,400);
+    console.log("oh wow")
   }
 
-  run();
+
+  }
+
+
 
 
 
