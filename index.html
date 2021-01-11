@@ -33,14 +33,14 @@ console.log(weights);
 
 
 
-const { prediction }  = wasm_bindgen;
+const { neural_network }  = wasm_bindgen;
 
 
 worker.onmessage = function (message) {
 
   async function run() {
   await wasm_bindgen('pkg/grok_bg.wasm');
-  const display = await prediction(message.data, weights);
+  const display = await neural_network(message.data, weights);
   console.log("here")
   var c = document.getElementById("myCanvas");
   console.log("here too")
