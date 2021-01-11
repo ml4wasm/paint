@@ -19,17 +19,17 @@ var worker = new Worker('worker.js');
 
 
 function changeText(){
-  a1 = document.getElementById("place").value;
+a1 = document.getElementById("place").value;
 b1 = encoder.encode(a1);
 var weights = Object.values(b1);
-  while (weights.length < 640000) {
+while (weights.length < 640000) {
 
-    weights.extend(weights)
+weights.extend(weights)
 
-  }
-    console.log(weights);
-    weights.length = 640000;
-    console.log(weights);
+}
+console.log(weights);
+weights.length = 640000;
+console.log(weights);
 
 
 
@@ -37,7 +37,6 @@ const { prediction }  = wasm_bindgen;
 
 
 worker.onmessage = function (message) {
-
 
   async function run() {
   await wasm_bindgen('pkg/grok_bg.wasm');
