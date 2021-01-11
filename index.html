@@ -46,28 +46,17 @@ worker.onmessage = function (message) {
       var n = Math.round(e.data[i]);
       send.push(n)
     }
+    console.log(send);
     send.length = 640000;
     send.fill(255,639999, 640000);
-
+    console.log(send);
 
     ctx.putImageData(send, 0, 0);
   }
 
-
   }
 
-
-
-
-
-
-
-
 }
-
-
-
-
 
 </script>
   </body>
