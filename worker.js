@@ -1,7 +1,7 @@
 importScripts('vecs.js');
 
 const r = Object.values(random)
-
+var l = r.length;
 var send = []
 if (r[0]!==0&&r[0]!==""&&r[0]!==null&&r[0]!==undefined){
   for (var i=0;i<l;i++){
