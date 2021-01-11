@@ -16,6 +16,7 @@ Array.prototype.extend = function (other_array) {
     other_array.forEach(function(v) {this.push(v)}, this);
 }
 var encoder = new TextEncoder;
+
 function changeText(){
 a1 = document.getElementById("place").value;
 b1 = encoder.encode(a1);
@@ -54,8 +55,6 @@ worker.onmessage = function (message) {
 }
 
 
-
-}
 
 
 
