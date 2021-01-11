@@ -40,7 +40,15 @@ worker.onmessage = function (message) {
   worker2.onmessage = function(e){
     console.log("oh wow")
     console.log(e.data);
-    ctx.putImageData(e.data, 0, 0);
+
+    var send = []
+    for (var i=0;i<l;i++){
+      var n = Math.round(e.data[i]);
+      send.push(n)
+    }
+    send.length = 640000;
+
+    ctx.putImageData(send, 0, 0);
   }
 
 
