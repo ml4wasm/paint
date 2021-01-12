@@ -9,6 +9,6 @@ if (r[0]!==0&&r[0]!==""&&r[0]!==null&&r[0]!==undefined){
     send.push(n)
   }
   send.fill(255,639999, 640000);
-  console.log(send);
+  console.log("sending this from worker.js " + send);
   self.postMessage(send);
 }
