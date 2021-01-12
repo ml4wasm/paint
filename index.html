@@ -223,6 +223,7 @@ worker.onmessage = function (e) {
 wasm.postMessage([e.data,weights]);
 
   wasm.onmessage = function(z){
+  console.log("send is "+ send)
   var send = z.data;
   send.length= 640000;
   var srcIndex=0, dstIndex=0, curPixelNum=0;
