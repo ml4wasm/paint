@@ -2,20 +2,22 @@ importScripts("pkg/grok.js");
 
 const { neural_network }  = wasm_bindgen;
 
-// async function run() {
+async function run() {
 
-// await wasm_bindgen('pkg/grok_bg.wasm');
-wasm_bindgen('pkg/grok_bg.wasm');
+await wasm_bindgen('pkg/grok_bg.wasm');
+};
+
+run();
 
 self.onmessage = function (message){
 
-  async function run() {
+  async function pr() {
 
   const display = await neural_network(message.data[0], message.data[1]); //image, weights
   self.postMessage(display);
 
   }
 
-  run();
+  pr();
 
 }
