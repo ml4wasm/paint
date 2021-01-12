@@ -224,18 +224,22 @@ wasm.postMessage([e.data,weights]);
   var send = z.data;
 
   send.length= 640000;
+
+  const t0 = performance.now();
   var srcIndex=0, dstIndex=0, curPixelNum=0;
 
-  	// for (curPixelNum=0; curPixelNum<400*400;  curPixelNum++){
-  	// 	mImgData.data[dstIndex] = send[srcIndex];		// r
-  	// 	mImgData.data[dstIndex+1] = send[srcIndex+1];	// g
-  	// 	mImgData.data[dstIndex+2] = send[srcIndex+2];	// b
-  	// 	mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
-  	// 	srcIndex += 3;
-  	// 	dstIndex += 4;
-  	// }
+  	for (curPixelNum=0; curPixelNum<400*400;  curPixelNum++){
+  		mImgData.data[dstIndex] = send[srcIndex];		// r
+  		mImgData.data[dstIndex+1] = send[srcIndex+1];	// g
+  		mImgData.data[dstIndex+2] = send[srcIndex+2];	// b
+  		mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
+  		srcIndex += 3;
+  		dstIndex += 4;
+  	}
     mImgData.data = send;
+    const t1 = performance.now();
     console.log(mImgData);
+    console.log(`Call to create image data took ${t1 - t0} milliseconds.`);
     ctx.putImageData(mImgData, 0, 0);
   }
 
