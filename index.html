@@ -217,12 +217,12 @@ var weights = message.data;
 
 
 worker.onmessage = function (e) {
-const t0 = performance.now();
 wasm.postMessage([e.data,weights]);
 
+const t0 = performance.now();
 wasm.onmessage = function(z){
 const t1 = performance.now();
-console.log(`wasm took ${t1 - t0} milliseconds.`);
+console.log(`wasm calling back took ${t1 - t0} milliseconds.`);
 
   var send = z.data;
 
