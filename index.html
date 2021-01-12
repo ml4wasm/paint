@@ -128,6 +128,29 @@ filter:drop-shadow(0 0 2px #000000);
 border-radius: 10px;
 
 }
+#description{
+box-sizing:border-box;
+z-index:396584906;
+line-height:120%;
+font-size:20px;
+text-align:center;
+height:calc(100% - 46px);
+height:calc(100% - 45px - 40px - 0.5rem);
+overflow:auto;
+padding:5px;
+height:100%;
+overflow:auto;
+height:calc(100% - 46px);
+height:calc(100% - 45px - 40px - 0.5rem);
+background:#ffffff;
+background-position:center;
+border: 1px double #000000;
+border-radius: 5px;
+transition:0.3s;
+-o-transition: all 0.3s ease-out;
+-webkit-transition: all 0.3s ease-out;
+-moz-transition: all 0.3s ease-out;
+}
 #content {
 padding: 10px;
 margin: auto;
@@ -149,37 +172,12 @@ border: 4px ridge #737373;
 filter: drop-shadow(0 0 2px #000000);
 border-radius: 10px;
 }
-#sidetext{
-grid-row:1/3;
-font-family:times, cursive;
-font-size:40px;
-background:#ffffff;
-background-image: url('https://64.media.tumblr.com/eff200e0891ccf24db774994cd820e3c/59fdb9db8a44b6ed-c5/s2048x3072/543986c918b80db88f5c2222249c6163eedee85a.jpg');
-background-position:center;
-background-size: cover;
-border: 4px ridge #737373;
-filter:drop-shadow(0 0 2px #000000);
-border-radius: 10px;
+
+#white{
+  color: white;
+  font-size: 30px;
 }
 
-#sidetext #peepee{
-transform-origin: center left;
-transform: rotate(90deg);
-margin-left: 50%;
-margin-top: calc(-25% - 1px * 2);
-font-size:40px;
-width: calc(480px + 4px * 2);
-width: calc(480px + 1px * 2 - 4px);
-background:#ffffff;
-background-position:center;
-border: 1px double #000000;
-border-radius: 5px;
-}
-
-#sidetext marquee{
-padding:10px;
-line-height: calc(100% + 10px - 4px);
-}
     </style>
   </head>
   <body>
@@ -190,15 +188,18 @@ line-height: calc(100% + 10px - 4px);
 <br>
 <canvas id="myCanvas" width="400" height="400">
 </div>
-<div id="sidetext">
-  <div id="peepee">
-    <marquee direction="left">Meaning is derived from loss.</marquee>
-  </div>
-</div>
 
 <div id="icon">
 
     <a href="/"><img src="https://raw.githubusercontent.com/ml4wasm/paint/main/assets/sidebar.jpg"></a>
+</div>
+
+<div id="sidebar">
+<div id='description'><div>This website uses WebAssembly to generate paintings from user input. The user input is translated to an array of weights for forward propagation in a perceptron, and that perceptron produces an array of numbers that JavaScript glue then translates into an image.</div></div>
+<div><br>
+<center><a id="white" href="https://github.com/ml4wasm/paint">github repo</a></center>
+</div>
+
 </div>
 </wrapper>
 <script>
