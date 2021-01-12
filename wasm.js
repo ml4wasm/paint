@@ -5,9 +5,11 @@ const { neural_network }  = wasm_bindgen;
 async function run() {
 
 await wasm_bindgen('pkg/grok_bg.wasm');
+
 };
 
 run();
+console.log("loaded wasm")
 
 self.onmessage = function (message){
 
