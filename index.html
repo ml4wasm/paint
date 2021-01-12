@@ -5,315 +5,49 @@
     <title>ml4wasm paintings</title>
 
     <style>
-/*
-    ::-webkit-scrollbar {
-       width:0px;
-    }
-
-    ::selection {
-       background-color: #ffffff;
-       color:#000000;
-    }
-
-    ::-moz-selection {
-       color: #ffffff;
-       background: #ffffff;
-    } */
-
-    body {
-       font-family:times new roman;
-       font-size:20px;
-       background-color: #ffffff;
-       color:#ffffff;
-       background-image: url(https://64.media.tumblr.com/4cdf828e6402bc7e88996d8f4347a118/50fb3b207f189db5-a0/s2048x3072/28e5f5a43898e9d9688bdd410d6ed5ea9ecf80eb.jpg);
-       background-size:cover;
-       background-attachment:fixed;
-       text-shadow:0px 0px 2px #000;
-    }
-
-    .title {
-       width:1190px;
-       color:#ffffff;
-       padding:5px;
-       font-size:40px;
-       position:relative;
-       text-align:center;
-       background-color:transparent;
-       margin-bottom:10px;
-       border: 7px solid #000000;
-       border-image:url(https://64.media.tumblr.com/8630a37af8d5174cec4f1fe6c61c0c75/50fb3b207f189db5-24/s2048x3072/938106578d127722964694ccba941954ceeb106f.gif);
-       border-image-slice:100;
-
-
-    }
-
-    #content {
-       width:1200px;
-       height:470px;
-       position:relative;
-       overflow:auto;
-
-       background-color:transparent;
-
-
-       border: 7px solid #000000;
-
-       border-image:url(https://64.media.tumblr.com/8630a37af8d5174cec4f1fe6c61c0c75/50fb3b207f189db5-24/s2048x3072/938106578d127722964694ccba941954ceeb106f.gif);
-       border-image-slice:100;
-
-
-       z-index:9999999999999;
-    }
-
-    #epico {
-        width:350px;
-        position:fixed;
-        height:440px;
-        margin:15px;
-        margin-top:10px;
-        border: 7px solid #ffffff;
-
-        border-image:url(https://64.media.tumblr.com/8630a37af8d5174cec4f1fe6c61c0c75/50fb3b207f189db5-24/s2048x3072/938106578d127722964694ccba941954ceeb106f.gif);
-        border-image-slice:100;
-
-
-    }
-
-    .woa{
-        width:350px;
-        height:440px;
-        object-fit:cover;
-        transition: .5s ease;
-        backface-visibility: hidden;
-        opacity: 1;
-        display: block;
-
-    }
-
-
-    .middle {
-        transition: .5s ease;
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%)
-    }
-
-    #epico:hover .woa {
-        opacity: 0.3;
-    }
-
-    #epico:hover .middle {
-        opacity: 1;
-    }
-
-
-    #sequel:hover .woa {
-        opacity: 0.3;
-    }
-
-    #sequel:hover .middle {
-        opacity: 1;
-    }
-
-    .fico {
-        width:250px;
-        border: 7px solid #000000;
-
-        border-image:url(https://64.media.tumblr.com/8630a37af8d5174cec4f1fe6c61c0c75/50fb3b207f189db5-24/s2048x3072/938106578d127722964694ccba941954ceeb106f.gif);
-        border-image-slice:100;
-
-        text-align:center;
-        margin:10px;
-        padding:10px;
-
-    }
-
-    #sequel {
-        width:350px;
-        position:fixed;
-        height:440px;
-        margin:827px;
-        margin-top:10px;
-        border: 7px solid #000000;
-
-        border-image:url(https://64.media.tumblr.com/8630a37af8d5174cec4f1fe6c61c0c75/50fb3b207f189db5-24/s2048x3072/938106578d127722964694ccba941954ceeb106f.gif);
-        border-image-slice:100;
-
-
-    }
-
-    #pene {
-        max-width:1920px;
-        position:relative;
-        margin-left:5%;
-        margin-top:20px;
-    }
-
-    a {
-       text-decoration:none;
-       color:#ffffff;
-
-       text-shadow: 0px 0px 2px #000000;
-
-    }
-
-    a:hover {
-       color:#ffffff;
-       text-shadow: 1px 1px 0.5px #000000;
-       -webkit-filter:blur(1px);
-    }
-
-    blockquote {
-       padding-left:5px;
-       border-left:1px solid;
-       color: #ffffff;
-       margin-left:3px;
-       margin-bottom:5px;
-    }
-
-    /* iframe, img, embed, object, video {
-       max-width: 100%;
-    } */
-
-    img {
-      height: auto;
-      width: auto;
-    }
-
-    article {
-
-      background-color:transparent;
-
-
-      width:400px;
-      /* padding:10px; */
-      font-size:20px;
-      font-family: times new roman;
-      position:relative;
-      margin:10px auto;
-      margin-bottom:20px;
-
-      border:7px solid #000000;
-
-
-      border-image:url(https://64.media.tumblr.com/8630a37af8d5174cec4f1fe6c61c0c75/50fb3b207f189db5-24/s2048x3072/938106578d127722964694ccba941954ceeb106f.gif);
-      border-image-slice:100;
-
-
-    }
-
-
-
-    .tooltip {
-       display: inline;
-       position: relative;
-    }
-
-
-    .quote {
-        text-align:center;
-    }
-
-
-
-    .audio {
-        width:100%;
-    }
-
-
-
-    .ques {
-        font-weight:bolder;
-    }
-
-    .ans {
-        font-style:normal;
-    }
-
-    .odd{
-        background:white;
-    }
-
-
-    #perma {
-        width:400px;
-        text-align:center;
-        position: relative;
-        color:#ffffff;
-        font-size:16px;
-
-        transition: .5s ease;
-    }
-
-    #perma:hover {
-        transform: scaleX(-1);
-        transition: .5s ease;
-        animation-iteration-count: 1;
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-        width:400px;
-        text-align:center;
-    }
-
-/* 
-    .dropdown-content {
-        width:400px;
-        margin-top:5px;
-        word-spacing:15px;
-        text-align:center;
-        display: none;
-        position: relative;
-        z-index: 1;
-        transform: scaleX(-1);
-        transition: .5s ease;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-        transform: scaleX(-1);
-        transition: .5s ease;
-    } */
-
-
-
-    .pagination {
-        text-align:center;
-        position:center;
-        margin-right:50px;
-        margin-top:-10px;
-    }
-
-    caption {
-        margin:12px;
-    }
-
+    :root {
+		--main-font: Arial;
+		--dark-blue: darkblue;
+		--black: black;
+		--blue: blue;
+		--grey: grey;
+		--dim-grey: dimgrey;
+		--transform: scale(1.02) translate(0px, 2px) skew(1deg, 0deg);
+		--base-size: 25px;
+		--zero: 0;
+		--two: 2px;
+		--trans: transparent;
+		--twenty-one: 21px;
+		--ten: 10px;
+		--three: 3px;
+		--one: 1px;
+		--twenty-three: 23px
+	}
+    textarea {
+    		margin-top: var(--zero);
+    		margin-bottom: var(--ten);
+    		height: 150px;
+    		font-family: var(--main-font);
+    		font-size: var(--base-size);
+    		border-radius: var(--two);
+    		padding-left: 1px;
+    		padding-right: var(--zero);
+    		width: 400px;
+    		margin-bottom: var(--ten);
+    		transition: .5s
+    	}
+      textarea:hover{
+		box-shadow: 0 0 5px var(--black);
+		border-radius: var(--three)
+	}
     </style>
   </head>
   <body>
 
-    <div class="title">LEARNING IS JUST MINIMIZING LOSS</div>
 
-    <div id="content">
-      <div id="epico">
-        <input id="place" placeholder="Type text to encode here."> <button onclick="changeText()" id="placer"> encode </button>
+<textarea id="place" placeholder="Type text to encode here."></textarea><button onclick="changeText()" id="placer"> generate image </button>
 
-    </div>
-
-    <article>
-      <canvas id="myCanvas" width="400" height="400">
-</article>
-
-    <div id="sequel">
-
-    </div>
-
-    </div>
+<canvas id="myCanvas" width="400" height="400">
 
 <script>
 var worker = new Worker('worker.js');
