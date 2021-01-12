@@ -217,10 +217,13 @@ var weights = message.data;
 
 
 worker.onmessage = function (e) {
-
+const t0 = performance.now();
 wasm.postMessage([e.data,weights]);
 
-  wasm.onmessage = function(z){
+wasm.onmessage = function(z){
+const t1 = performance.now();
+console.log(`wasm took ${t1 - t0} milliseconds.`);
+
   var send = z.data;
 
   send.length= 640000;
@@ -237,9 +240,7 @@ wasm.postMessage([e.data,weights]);
   		dstIndex += 4;
   	}
     mImgData.data = send;
-    const t1 = performance.now();
     console.log(mImgData);
-    console.log(`Call to create image data took ${t1 - t0} milliseconds.`);
     ctx.putImageData(mImgData, 0, 0);
   }
 
