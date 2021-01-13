@@ -10,14 +10,11 @@ console.log("loaded wasm")
 
 self.onmessage = function (message){
 
-  async function pr() {
-
+;(async () => {
   const display = await neural_network(message.data[0], message.data[1]); //image, weights
   console.log("sending from wasm 💐")
   self.postMessage(display);
 
-  }
-
-  pr();
+})();
 
 }
