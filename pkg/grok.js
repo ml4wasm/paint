@@ -32,65 +32,19 @@ let wasm_bindgen;
         return getFloat64Memory0().subarray(ptr / 8, ptr / 8 + len);
     }
     /**
-    * @param {Float64Array} vec_a
-    * @param {Float64Array} vec_b
-    * @returns {Float64Array}
-    */
-    __exports.elementwise_addition = function(vec_a, vec_b) {
-        try {
-            const retptr = wasm.__wbindgen_export_0.value - 16;
-            wasm.__wbindgen_export_0.value = retptr;
-            var ptr0 = passArrayF64ToWasm0(vec_a, wasm.__wbindgen_malloc);
-            var len0 = WASM_VECTOR_LEN;
-            var ptr1 = passArrayF64ToWasm0(vec_b, wasm.__wbindgen_malloc);
-            var len1 = WASM_VECTOR_LEN;
-            wasm.elementwise_addition(retptr, ptr0, len0, ptr1, len1);
-            var r0 = getInt32Memory0()[retptr / 4 + 0];
-            var r1 = getInt32Memory0()[retptr / 4 + 1];
-            var v2 = getArrayF64FromWasm0(r0, r1).slice();
-            wasm.__wbindgen_free(r0, r1 * 8);
-            return v2;
-        } finally {
-            wasm.__wbindgen_export_0.value += 16;
-        }
-    };
-
-    /**
-    * @param {Float64Array} vec
-    * @param {number} n
-    * @returns {Float64Array}
-    */
-    __exports.elementwise_scalar_multiplication = function(vec, n) {
-        try {
-            const retptr = wasm.__wbindgen_export_0.value - 16;
-            wasm.__wbindgen_export_0.value = retptr;
-            var ptr0 = passArrayF64ToWasm0(vec, wasm.__wbindgen_malloc);
-            var len0 = WASM_VECTOR_LEN;
-            wasm.elementwise_scalar_multiplication(retptr, ptr0, len0, n);
-            var r0 = getInt32Memory0()[retptr / 4 + 0];
-            var r1 = getInt32Memory0()[retptr / 4 + 1];
-            var v1 = getArrayF64FromWasm0(r0, r1).slice();
-            wasm.__wbindgen_free(r0, r1 * 8);
-            return v1;
-        } finally {
-            wasm.__wbindgen_export_0.value += 16;
-        }
-    };
-
-    /**
-    * @param {Float64Array} image
+    * @param {Float64Array} input
     * @param {Float64Array} weights
     * @returns {Float64Array}
     */
-    __exports.prediction = function(image, weights) {
+    __exports.neural_network = function(input, weights) {
         try {
             const retptr = wasm.__wbindgen_export_0.value - 16;
             wasm.__wbindgen_export_0.value = retptr;
-            var ptr0 = passArrayF64ToWasm0(image, wasm.__wbindgen_malloc);
+            var ptr0 = passArrayF64ToWasm0(input, wasm.__wbindgen_malloc);
             var len0 = WASM_VECTOR_LEN;
             var ptr1 = passArrayF64ToWasm0(weights, wasm.__wbindgen_malloc);
             var len1 = WASM_VECTOR_LEN;
-            wasm.prediction(retptr, ptr0, len0, ptr1, len1);
+            wasm.neural_network(retptr, ptr0, len0, ptr1, len1);
             var r0 = getInt32Memory0()[retptr / 4 + 0];
             var r1 = getInt32Memory0()[retptr / 4 + 1];
             var v2 = getArrayF64FromWasm0(r0, r1).slice();
