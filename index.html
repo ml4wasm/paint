@@ -248,7 +248,7 @@ worker.onmessage = function (e){
 function changeText(){
 a1 = document.getElementById("place").value;
 b1 = encoder.encode(a1);
-var weights = Object.values(b1);
+window.weights = Object.values(b1);
 while (weights.length < 360000) {
 weights.extend(weights)
 }
