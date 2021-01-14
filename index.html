@@ -220,7 +220,7 @@ var encoder = new TextEncoder;
 const { neural_network }  = wasm_bindgen;
 
 
-async function asyncCall() {
+async function asyncCall(send,weights) {
   const t0 = performance.now();
   const display = await neural_network(send,weights); //image, weights
   const t1 = performance.now();
