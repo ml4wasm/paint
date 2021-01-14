@@ -122,12 +122,12 @@ border-radius: 10px;
 box-sizing:border-box;
 z-index:396584906;
 line-height:120%;
-font-size:20px;
+font-size:19.7px;
 text-align:center;
 height:calc(100% - 46px);
 height:calc(100% - 45px - 40px - 0.5rem);
 overflow:auto;
-padding:5px;
+padding:2px;
 height:100%;
 overflow:auto;
 height:calc(100% - 46px);
@@ -175,7 +175,7 @@ font-size: 30px;
 
 <div id="content">
 
-<center><textarea id="place" placeholder="Type text here.This text will be passed to the perceptron as an array of weights for forward propagation."></textarea></center><br><button onclick="changeText()" id="placer"> generate image</button>
+<center><textarea id="place" placeholder="Type a paragraph here. This text will be passed to the perceptron as an array of weights for forward propagation."></textarea></center><br><button onclick="changeText()" id="placer"> generate image</button>
 
 <canvas id="myCanvas" width="300" height="300">
 </div>
@@ -183,7 +183,7 @@ font-size: 30px;
 
 
 <div id="sidebar">
-<div id='description'><div>The user input is translated into an array of weights for forward propagation in a <a href="https://en.wikipedia.org/wiki/Perceptron">perceptron</a>. <br> The perceptron produces an array of numbers that JavaScript glue then translates into an image. This website is built with WebAssembly. </div></div>
+<div id='description'><div>The user input is translated into weights for a <a href="https://en.wikipedia.org/wiki/Perceptron">perceptron</a>. <br> The perceptron produces an array of numbers that JavaScript glue then translates into an image. This website is built with WebAssembly. </div></div>
 <div><br>
 <center><a id="white" href="https://github.com/ml4wasm/paint">github repo</a></center>
 </div>
