@@ -181,7 +181,7 @@ label{
 
 <div id="content">
 
-<label for="place"> Train the perceptron </label>
+<label id="lab" for="place"> Train the perceptron </label>
 <textarea name="place" id="place" placeholder="Type a paragraph here. This text will be passed to the perceptron as an array of weights for forward propagation."></textarea><br><button onclick="changeText()" id="placer"> generate image</button>
 
 <canvas  id="myCanvas" width="300" height="300" name="perceptron output" alt="output image from percepton">
@@ -265,6 +265,7 @@ console.log("weights done!");
 asyncCall();
 document.getElementById("place").style.display = "none";
 document.getElementById("placer").style.display = "none";
+document.getElementById("lab").style.display = "none";
 }
 
 </script>
