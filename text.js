@@ -10,5 +10,5 @@ self.onmessage = function (e){
   }
   weights.length = 640000;
   self.postMessage(weights);
-  console.log(sent weights!);
+  console.log("sent weights!");
 }
