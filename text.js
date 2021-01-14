@@ -1,3 +1,6 @@
+var wasm = new Worker('wasm.js');
+
+
 Array.prototype.extend = function (other_array) {
     other_array.forEach(function(v) {this.push(v)}, this);
 }
@@ -9,6 +12,6 @@ self.onmessage = function (e){
   weights.extend(weights)
   }
   weights.length = 360000;
-  self.postMessage(weights);
+  wasm.postMessage(weights);
   console.log("sent weights!");
 }

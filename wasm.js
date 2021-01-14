@@ -7,12 +7,21 @@ const { neural_network }  = wasm_bindgen;
 })();
 console.log("loaded wasm")
 
-self.onmessage = function (message){
+var worker = new Worker('worker.js');
+var text = new Worker('text.js');
 
-// ;(async () => {
+
+worker.onmessage = function (message){
+
+  self.image = message.data;
+
+  text.onmessage = function (e){
+
+  self.weights = e.data;
+
+;(async () => {
   const t0 = performance.now();
-  //const display = await neural_network(message.data[0], message.data[1]); //image, weights
-  const display = neural_network(message.data[0], message.data[1]);
+  const display = await neural_network(image,weights); //image, weights
   const t1 = performance.now();
   console.log(`wasm function took ${t1 - t0} milliseconds.`);
   console.log("sending from wasm 💐")
@@ -23,6 +32,8 @@ self.onmessage = function (message){
   const t3 = performance.now();
   console.log(`posting message ${t3 - t2} milliseconds.`);
 
-// })();
+})();
+
+}
 
 }

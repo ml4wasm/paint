@@ -1,5 +1,8 @@
 importScripts('vecs.js');
 
+var wasm = new Worker('wasm.js');
+
+
 const r = Object.values(random)
 var l = r.length;
 var send = []
@@ -10,5 +13,5 @@ if (r[0]!==0&&r[0]!==""&&r[0]!==null&&r[0]!==undefined){
   }
   send.fill(255,359999, 360000);
   console.log("sending this from worker.js " + send);
-  self.postMessage(send);
+  wasm.postMessage(send);
 }

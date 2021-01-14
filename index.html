@@ -211,12 +211,10 @@ var mImgData = ctx.createImageData(300, 300);
 function changeText(){
 a1 = document.getElementById("place").value;
 text.postMessage(a1);
-text.onmessage = function (message){
 var weights = message.data;
 
 
-worker.onmessage = function (e) {
-wasm.postMessage([e.data,weights]);
+// wasm.postMessage([e.data,weights]);
 
 wasm.onmessage = function(z){
 console.log("wasm got a message. just checking ✧")
@@ -241,8 +239,8 @@ console.log("wasm got a message. just checking ✧")
     ctx.putImageData(mImgData, 0, 0);
   }
 
-  }
-}
+
+
 
 }
 
