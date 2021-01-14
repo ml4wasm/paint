@@ -218,10 +218,8 @@ var weights = message.data;
 worker.onmessage = function (e) {
 wasm.postMessage([e.data,weights]);
 
-const t0 = performance.now();
 wasm.onmessage = function(z){
-const t1 = performance.now();
-console.log(`wasm calling back took ${t1 - t0} milliseconds.`);
+
 
   var send = z.data;
   console.log("we got sent "+ send );
