@@ -23,9 +23,6 @@
 		--twenty-three: 23px
 	}
 
-
-
-
 body {
   padding: 0px;
   margin: 0px;
@@ -229,11 +226,11 @@ console.log(`wasm calling back took ${t1 - t0} milliseconds.`);
 
   var send = z.data;
 
-  send.length= 640000;
+  send.length= 360000;
 
   var srcIndex=0, dstIndex=0, curPixelNum=0;
 
-  	for (curPixelNum=0; curPixelNum<400*400;  curPixelNum++){
+  	for (curPixelNum=0; curPixelNum<300*300;  curPixelNum++){
   		mImgData.data[dstIndex] = send[srcIndex];		// r
   		mImgData.data[dstIndex+1] = send[srcIndex+1];	// g
   		mImgData.data[dstIndex+2] = send[srcIndex+2];	// b
