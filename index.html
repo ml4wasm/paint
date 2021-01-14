@@ -212,12 +212,11 @@ function changeText(){
 a1 = document.getElementById("place").value;
 text.postMessage(a1);
 text.onmessage = function (message){
-window.weights = message.data;
-}
+var weights = message.data;
+
 
 worker.onmessage = function (e) {
 wasm.postMessage([e.data,weights]);
-}
 
 const t0 = performance.now();
 wasm.onmessage = function(z){
@@ -243,8 +242,8 @@ console.log(`wasm calling back took ${t1 - t0} milliseconds.`);
     ctx.putImageData(mImgData, 0, 0);
   }
 
-
-
+  }
+}
 
 }
 
