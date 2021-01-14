@@ -219,7 +219,7 @@ worker.onmessage = function (e) {
 wasm.postMessage([e.data,weights]);
 
 wasm.onmessage = function(z){
-
+console.log("wasm got a message. just checking ✧")
 
   var send = z.data;
   console.log("we got sent "+ send );
