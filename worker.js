@@ -2,7 +2,7 @@ importScripts('vecs.js');
 
 var wasm = new Worker('wasm.js');
 
-
+console.log(random);
 const r = Object.values(random)
 var l = r.length;
 var send = []

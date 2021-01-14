@@ -21,8 +21,7 @@ text.onmessage = function (e){
 
 console.log("got a message from text.js in wasm");
 
-
-  self.weights = e.data;
+self.weights = e.data;
 
 ;(async () => {
   const t0 = performance.now();
