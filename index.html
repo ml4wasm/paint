@@ -65,7 +65,7 @@ display: grid;
 grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 1fr 1fr 1fr;
 width: 420px;
-height: 100%;
+height: 600px;
 box-sizing: border-box;
 }
 #icon{
@@ -256,7 +256,8 @@ weights.length = 360000;
 console.log("weights done!");
 
 asyncCall(send,weights);
-
+document.getElementById("place").style.display = "none";
+document.getElementById("placer").style.display = "none";
 }
 
 </script>
