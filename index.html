@@ -5,35 +5,34 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ml4wasm paintings</title>
+<title>ml4wasm paintings</title>
 
-    <style>
-    :root {
-		--black: black;
-		--blue: blue;
-		--transform: scale(1.02) translate(0px, 2px) skew(1deg, 0deg);
-		--base-size: 25px;
-		--zero: 0;
-		--two: 2px;
-		--trans: transparent;
-		--twenty-one: 21px;
-		--ten: 10px;
-		--three: 3px;
-		--one: 1px;
-		--twenty-three: 23px
-	}
+<style>
+:root {
+--black: black;
+--blue: blue;
+--transform: scale(1.02) translate(0px, 2px) skew(1deg, 0deg);
+--base-size: 25px;
+--zero: 0;
+--two: 2px;
+--trans: transparent;
+--twenty-one: 21px;
+--ten: 10px;
+--three: 3px;
+--one: 1px;
+--twenty-three: 23px
+}
 
 body {
-  padding: 0px;
-  margin: 0px;
-  overflow: hidden;
-  font-family: times, cursive;
-  font-size: 20px;
-  line-height: 140%;
-  background-image: url('https://64.media.tumblr.com/eff200e0891ccf24db774994cd820e3c/59fdb9db8a44b6ed-c5/s2048x3072/543986c918b80db88f5c2222249c6163eedee85a.jpg');
-
-  background-size: 100% 150%;
-  background-position: center;
+padding: 0px;
+margin: 0px;
+overflow: hidden;
+font-family: times, cursive;
+font-size: 20px;
+line-height: 140%;
+background-image: url('https://64.media.tumblr.com/eff200e0891ccf24db774994cd820e3c/59fdb9db8a44b6ed-c5/s2048x3072/543986c918b80db88f5c2222249c6163eedee85a.jpg');
+background-size: 100% 150%;
+background-position: center;
 
 
 }
@@ -51,10 +50,10 @@ margin-bottom: var(--ten);
 transition: .5s
 }
 button{
-  font-size: 20px;
-  padding: 5px;
-  border-radius: 5px;
-  background:rgba(255,255,255, 0.9);
+font-size: 20px;
+padding: 5px;
+border-radius: 5px;
+background:rgba(255,255,255, 0.9);
 
 }
 textarea:hover{
@@ -110,14 +109,14 @@ grid-row: 4/5;
 }
 
 #sidetext {
-    font-family: times, cursive;
-    font-size: 40px;
-    background:rgba(255,255,255, 0.4);
-    background-position: center;
-    background-size: cover;
-    border: 4px ridge #737373;
-    filter: drop-shadow(0 0 2px #000000);
-    border-radius: 10px;
+font-family: times, cursive;
+font-size: 40px;
+background:rgba(255,255,255, 0.4);
+background-position: center;
+background-size: cover;
+border: 4px ridge #737373;
+filter: drop-shadow(0 0 2px #000000);
+border-radius: 10px;
 }
 #description{
 box-sizing:border-box;
@@ -143,8 +142,8 @@ transition:0.3s;
 -moz-transition: all 0.3s ease-out;
 }
 #content {
-  grid-column-start:1;
-  grid-column-end:3;
+grid-column-start:1;
+grid-column-end:3;
 padding: 10px;
 margin: auto;
 text-align: center;
@@ -163,8 +162,8 @@ grid-row-end: 4;
 }
 
 #white{
-  color: white;
-  font-size: 30px;
+color: white;
+font-size: 30px;
 }
 
 
@@ -224,7 +223,7 @@ weights.extend(weights)
 weights.length = 360000;
 console.log("weights done!");
 
-const r = Object.values(rand);
+const r = Object.values(random);
 var l = r.length;
 var send = []
 if (r[0]!==0&&r[0]!==""&&r[0]!==null&&r[0]!==undefined){
