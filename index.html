@@ -198,37 +198,71 @@ grid-row-end: 4;
 
 
 </wrapper></center>
+<script src="pkg/grok.js"></script>
+<script async src="vecs.js"></script>
 <script>
-var worker = new Worker('worker.js');
-var wasm = new Worker('wasm.js');
-var text = new Worker('text.js');
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 var mImgData = ctx.createImageData(300, 300);
 
+;(async () => {
+  await wasm_bindgen('./pkg/grok_bg.wasm');
+})();
+
+Array.prototype.extend = function (other_array) {
+    other_array.forEach(function(v) {this.push(v)}, this);
+}
+var encoder = new TextEncoder;
+
 function changeText(){
 a1 = document.getElementById("place").value;
-text.postMessage(a1);
+b1 = encoder.encode(a1);
+var weights = Object.values(b1);
+while (weights.length < 360000) {
+weights.extend(weights)
 }
+weights.length = 360000;
+console.log("weights done!");
 
-wasm.onmessage = function(z){
-console.log("wasm got a message. just checking ✧")
-var send = z.data;
-console.log("we got sent "+ send );
+const r = Object.values(random)
+var l = r.length;
+var send = []
+if (r[0]!==0&&r[0]!==""&&r[0]!==null&&r[0]!==undefined){
+  for (var i=0;i<l;i++){
+    var n = Math.round(r[i]);
+    send.push(n)
+  }
+
+}
+send.fill(255,359999, 360000);
+
 send.length= 360000;
-var srcIndex=0, dstIndex=0, curPixelNum=0;
 
-	for (curPixelNum=0; curPixelNum<300*300;  curPixelNum++){
-		mImgData.data[dstIndex] = send[srcIndex];		// r
-		mImgData.data[dstIndex+1] = send[srcIndex+1];	// g
-		mImgData.data[dstIndex+2] = send[srcIndex+2];	// b
-		mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
-		srcIndex += 3;
-		dstIndex += 4;
-	}
-mImgData.data = send;
-console.log(mImgData);
-ctx.putImageData(mImgData, 0, 0);
+
+
+;(async () => {
+  const t0 = performance.now();
+  const display = await neural_network(image,weights); //image, weights
+  const t1 = performance.now();
+  console.log(`wasm function took ${t1 - t0} milliseconds.`);
+
+  var srcIndex=0, dstIndex=0, curPixelNum=0;
+
+  	for (curPixelNum=0; curPixelNum<300*300;  curPixelNum++){
+  		mImgData.data[dstIndex] = send[srcIndex];		// r
+  		mImgData.data[dstIndex+1] = send[srcIndex+1];	// g
+  		mImgData.data[dstIndex+2] = send[srcIndex+2];	// b
+  		mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
+  		srcIndex += 3;
+  		dstIndex += 4;
+  	}
+  mImgData.data = send;
+  console.log(mImgData);
+  ctx.putImageData(mImgData, 0, 0);
+})();
+
+
+
 }
 
 </script>
