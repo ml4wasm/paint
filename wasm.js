@@ -13,9 +13,14 @@ var text = new Worker('text.js');
 
 worker.onmessage = function (message){
 
-  self.image = message.data;
+console.log("got a message from worker.js in wasm");
 
-  text.onmessage = function (e){
+self.image = message.data;
+
+text.onmessage = function (e){
+
+console.log("got a message from text.js in wasm");
+
 
   self.weights = e.data;
 
