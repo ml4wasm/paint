@@ -10,10 +10,17 @@ console.log("loaded wasm")
 self.onmessage = function (message){
 
 ;(async () => {
-  await wasm_bindgen('./pkg/grok_bg.wasm');
+  const t0 = performance.now();
   const display = await neural_network(message.data[0], message.data[1]); //image, weights
+  const t1 = performance.now();
+  console.log(`wasm function ${t1 - t0} milliseconds.`);
   console.log("sending from wasm 💐")
+
+  const t2 = performance.now();
+
   self.postMessage(display);
+  const t3 = performance.now();
+  console.log(`posting message ${t3 - t2} milliseconds.`);
 
 })();
 
