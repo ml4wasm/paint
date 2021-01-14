@@ -175,7 +175,7 @@ font-size: 30px;
 
   <div id="content">
 
-  <textarea id="place" placeholder="Type text here.This text will be passed to the perceptron as an array of weights for forward propagation."></textarea><br><button onclick="changeText()" id="placer"> generate image </button>
+  <center><textarea id="place" placeholder="Type text here.This text will be passed to the perceptron as an array of weights for forward propagation."></textarea></center><br><button onclick="changeText()" id="placer"> generate image </button>
   <br><br>
   <canvas id="myCanvas" width="300" height="300">
   </div>
@@ -240,6 +240,10 @@ async function asyncCall(send,weights) {
   ctx.putImageData(mImgData, 0, 0);
 }
 
+worker.onmessage = function (e){
+  window.send = e.data;
+  console.log(send);
+}
 
 function changeText(){
 a1 = document.getElementById("place").value;
@@ -251,13 +255,7 @@ weights.extend(weights)
 weights.length = 360000;
 console.log("weights done!");
 
-worker.onmessage = function (e){
-  var send = e.data;
-  console.log(send);
-  asyncCall(send,weights);
-}
-
-
+asyncCall(send,weights);
 
 }
 
