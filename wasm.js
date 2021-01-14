@@ -12,9 +12,9 @@ self.onmessage = function (message){
 // ;(async () => {
   const t0 = performance.now();
   //const display = await neural_network(message.data[0], message.data[1]); //image, weights
-  const display = neural_network(message.data[0], message.data[1]); 
+  const display = neural_network(message.data[0], message.data[1]);
   const t1 = performance.now();
-  console.log(`wasm function ${t1 - t0} milliseconds.`);
+  console.log(`wasm function took ${t1 - t0} milliseconds.`);
   console.log("sending from wasm 💐")
 
   const t2 = performance.now();
