@@ -222,7 +222,7 @@ const { neural_network }  = wasm_bindgen;
 
 async function asyncCall() {
   const t0 = performance.now();
-  const display = await neural_network(image,weights); //image, weights
+  const display = await neural_network(send,weights); //image, weights
   const t1 = performance.now();
   console.log(`wasm function took ${t1 - t0} milliseconds.`);
 
