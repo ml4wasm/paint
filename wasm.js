@@ -12,16 +12,12 @@ var text = new Worker('text.js');
 
 
 worker.onmessage = function (message){
-
-console.log("got a message from worker.js in wasm");
-
 self.image = message.data;
-
+console.log("got a message from worker.js in wasm");
 text.onmessage = function (e){
-
+self.weights = e.data;
 console.log("got a message from text.js in wasm");
 
-self.weights = e.data;
 
 ;(async () => {
   const t0 = performance.now();

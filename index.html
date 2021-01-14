@@ -193,8 +193,7 @@ grid-row-end: 4;
 
 
 <div id="icon">
-
-    <a href="/paint"><img src="https://raw.githubusercontent.com/ml4wasm/paint/main/assets/sidebar.jpg"></a>
+<a href="/paint"><img src="https://raw.githubusercontent.com/ml4wasm/paint/main/assets/sidebar.jpg"></a>
 </div>
 
 
@@ -207,38 +206,29 @@ var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 var mImgData = ctx.createImageData(300, 300);
 
-
 function changeText(){
 a1 = document.getElementById("place").value;
 text.postMessage(a1);
-
+}
 
 wasm.onmessage = function(z){
 console.log("wasm got a message. just checking ✧")
+var send = z.data;
+console.log("we got sent "+ send );
+send.length= 360000;
+var srcIndex=0, dstIndex=0, curPixelNum=0;
 
-  var send = z.data;
-  console.log("we got sent "+ send );
-
-  send.length= 360000;
-
-  var srcIndex=0, dstIndex=0, curPixelNum=0;
-
-  	for (curPixelNum=0; curPixelNum<300*300;  curPixelNum++){
-  		mImgData.data[dstIndex] = send[srcIndex];		// r
-  		mImgData.data[dstIndex+1] = send[srcIndex+1];	// g
-  		mImgData.data[dstIndex+2] = send[srcIndex+2];	// b
-  		mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
-  		srcIndex += 3;
-  		dstIndex += 4;
-  	}
-    mImgData.data = send;
-    console.log(mImgData);
-    ctx.putImageData(mImgData, 0, 0);
-  }
-
-
-
-
+	for (curPixelNum=0; curPixelNum<300*300;  curPixelNum++){
+		mImgData.data[dstIndex] = send[srcIndex];		// r
+		mImgData.data[dstIndex+1] = send[srcIndex+1];	// g
+		mImgData.data[dstIndex+2] = send[srcIndex+2];	// b
+		mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
+		srcIndex += 3;
+		dstIndex += 4;
+	}
+mImgData.data = send;
+console.log(mImgData);
+ctx.putImageData(mImgData, 0, 0);
 }
 
 </script>
