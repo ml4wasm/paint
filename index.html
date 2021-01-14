@@ -211,10 +211,7 @@ var mImgData = ctx.createImageData(300, 300);
 function changeText(){
 a1 = document.getElementById("place").value;
 text.postMessage(a1);
-var weights = message.data;
 
-
-// wasm.postMessage([e.data,weights]);
 
 wasm.onmessage = function(z){
 console.log("wasm got a message. just checking ✧")
