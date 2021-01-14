@@ -35,8 +35,10 @@ line-height: 140%;
 background-image: url('https://64.media.tumblr.com/eff200e0891ccf24db774994cd820e3c/59fdb9db8a44b6ed-c5/s2048x3072/543986c918b80db88f5c2222249c6163eedee85a.jpg');
 background-size: 200% 200%;
 background-position: center;
+}
 
-
+a{
+  color: darkblue;
 }
 textarea {
 margin-top: var(--zero);
@@ -45,7 +47,7 @@ height: 130px;
 font-family: Arial;
 font-size: var(--base-size);
 border-radius: var(--ten);
-padding-left: 1px;
+padding-left: 3px;
 padding-right: var(--zero);
 width: 390px;
 margin-bottom: var(--ten);
@@ -122,18 +124,12 @@ border-radius: 10px;
 }
 #description{
 box-sizing:border-box;
-z-index:396584906;
 line-height:120%;
-font-size:19.7px;
+font-size:23px;
 text-align:center;
-height:calc(100% - 46px);
-height:calc(100% - 45px - 40px - 0.5rem);
+padding:5px;
 overflow:auto;
-padding:2px;
-height:100%;
-overflow:auto;
-height:calc(100% - 46px);
-height:calc(100% - 45px - 40px - 0.5rem);
+height:calc(100% - 3.9rem);
 background:#ffffff;
 background-position:center;
 border: 1px double #000000;
@@ -142,6 +138,8 @@ transition:0.3s;
 -o-transition: all 0.3s ease-out;
 -webkit-transition: all 0.3s ease-out;
 -moz-transition: all 0.3s ease-out;
+text-shadow: 0 0 2px #000000;
+
 }
 #content {
 grid-column-start:1;
@@ -168,7 +166,13 @@ color: white;
 font-size: 30px;
 }
 
-
+label{
+  text-transform: uppercase;
+  color: black;
+  font-family: Arial;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 30px white;
+}
 
 </style>
 </head>
@@ -177,24 +181,25 @@ font-size: 30px;
 
 <div id="content">
 
-<center><textarea id="place" placeholder="Type a paragraph here. This text will be passed to the perceptron as an array of weights for forward propagation."></textarea></center><br><button onclick="changeText()" id="placer"> generate image</button>
+<label for="place"> Train the perceptron </label>
+<textarea name="place" id="place" placeholder="Type a paragraph here. This text will be passed to the perceptron as an array of weights for forward propagation."></textarea><br><button onclick="changeText()" id="placer"> generate image</button>
 
-<canvas id="myCanvas" width="300" height="300">
+<canvas  id="myCanvas" width="300" height="300" name="perceptron output" alt="output image from percepton">
 </div>
 
 
 
 <div id="sidebar">
 <div id='description'><div>The user input is translated into weights for a <a href="https://en.wikipedia.org/wiki/Perceptron">perceptron</a>. <br> The perceptron produces an array of numbers that JavaScript glue then translates into an image. This website is built with WebAssembly. </div></div>
-<div><br>
-<center><a id="white" href="https://github.com/ml4wasm/paint">github repo</a></center>
-</div>
+
+<div><br><a id="white" href="https://github.com/ml4wasm/paint">github</a></div>
+
 
 </div>
 
 
 <div id="icon">
-<a href="/paint"><img src="https://raw.githubusercontent.com/ml4wasm/paint/main/assets/sidebar.jpg"></a>
+<a href="/paint"><img alt="sppoky ball" src="https://raw.githubusercontent.com/ml4wasm/paint/main/assets/sidebar.jpg"></a>
 </div>
 
 
