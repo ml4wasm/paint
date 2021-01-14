@@ -200,6 +200,10 @@ font-size: 30px;
 <script src="pkg/grok.js"></script>
 <script src="vecs.js"></script>
 <script>
+
+
+
+
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 var mImgData = ctx.createImageData(300, 300);
@@ -212,6 +216,30 @@ Array.prototype.extend = function (other_array) {
     other_array.forEach(function(v) {this.push(v)}, this);
 }
 var encoder = new TextEncoder;
+
+
+
+async function asyncCall() {
+  const t0 = performance.now();
+  const display = await neural_network(image,weights); //image, weights
+  const t1 = performance.now();
+  console.log(`wasm function took ${t1 - t0} milliseconds.`);
+
+  var srcIndex=0, dstIndex=0, curPixelNum=0;
+
+  	for (curPixelNum=0; curPixelNum<300*300;  curPixelNum++){
+  		mImgData.data[dstIndex] = send[srcIndex];		// r
+  		mImgData.data[dstIndex+1] = send[srcIndex+1];	// g
+  		mImgData.data[dstIndex+2] = send[srcIndex+2];	// b
+  		mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
+  		srcIndex += 3;
+  		dstIndex += 4;
+  	}
+  mImgData.data = send;
+  console.log(mImgData);
+  ctx.putImageData(mImgData, 0, 0);
+}
+
 
 function changeText(){
 a1 = document.getElementById("place").value;
@@ -238,28 +266,7 @@ send.fill(255,359999, 360000);
 send.length= 360000;
 
 
-
-(async () => {
-  const t0 = performance.now();
-  const display = await neural_network(image,weights); //image, weights
-  const t1 = performance.now();
-  console.log(`wasm function took ${t1 - t0} milliseconds.`);
-
-  var srcIndex=0, dstIndex=0, curPixelNum=0;
-
-  	for (curPixelNum=0; curPixelNum<300*300;  curPixelNum++){
-  		mImgData.data[dstIndex] = send[srcIndex];		// r
-  		mImgData.data[dstIndex+1] = send[srcIndex+1];	// g
-  		mImgData.data[dstIndex+2] = send[srcIndex+2];	// b
-  		mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
-  		srcIndex += 3;
-  		dstIndex += 4;
-  	}
-  mImgData.data = send;
-  console.log(mImgData);
-  ctx.putImageData(mImgData, 0, 0);
-})();
-
+asyncCall();
 
 
 }
