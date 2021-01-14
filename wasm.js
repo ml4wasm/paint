@@ -2,8 +2,6 @@ importScripts("pkg/grok.js");
 
 const { neural_network }  = wasm_bindgen;
 
-
-// wasm_bindgen('pkg/grok_bg.wasm');
 ;(async () => {
   await wasm_bindgen('./pkg/grok_bg.wasm');
 })();
