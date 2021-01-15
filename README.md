@@ -1,7 +1,7 @@
 # paint
 <h3> Generates "paintings" with basic machine learning in WebAssembly. </h3>
 <img src="https://raw.githubusercontent.com/ml4wasm/paint/main/assets/quick.gif" height="300">
-<h3> API </h3>
+<h2> API </h2>
 Rust compiled with <a href="https://github.com/rustwasm/wasm-pack">📦✨wasm-pack</a> generates the WebAssembly binary, so loading the <code>.wasm</code> file is relatively painless:
 
 <pre>
