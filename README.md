@@ -24,9 +24,9 @@ var ImgData = ctx.createImageData(300, 300); //300px is the image width/height w
 var srcIndex=0, dstIndex=0, curPixelNum=0;
 
 for (curPixelNum=0; curPixelNum<300*300;  curPixelNum++){ 
-  ImgData.data[dstIndex] = send[srcIndex];		// r
-  ImgData.data[dstIndex+1] = send[srcIndex+1];	// g
-  ImgData.data[dstIndex+2] = send[srcIndex+2];	// b
+  ImgData.data[dstIndex] = send[srcIndex]; // r
+  ImgData.data[dstIndex+1] = send[srcIndex+1]; // g
+  ImgData.data[dstIndex+2] = send[srcIndex+2]; // b
   ImgData.data[dstIndex+3] = 255; // constant alpha, 100% opaque
   srcIndex += 3;
   dstIndex += 4;
