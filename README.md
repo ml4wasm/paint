@@ -1,5 +1,5 @@
 # paint
-<h3> Generates "paintings" with basic machine learning in WebAssembly. </h3>
+<h3> Generates "paintings" using basic machine learning and WebAssembly. </h3>
 <img src="https://raw.githubusercontent.com/ml4wasm/paint/main/assets/quick.gif" height="300">
 <h2> API </h2>
 Rust compiled with <a href="https://github.com/rustwasm/wasm-pack">📦✨wasm-pack</a> generates the WebAssembly binary, so loading the <code>.wasm</code> file is relatively painless:
@@ -37,4 +37,4 @@ ctx.putImageData(ImgData, 0, 0); //this renders the image to the canvas
 
 </pre>
 
-and there you go! You have a "painting" generator that incorporates basic machine learning and is written with WebAssembly.
+and there you go! You can use WebAssembly and basic machine learning to create a "painting" generator.
